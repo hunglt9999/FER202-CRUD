@@ -4,13 +4,17 @@ import { ListItems } from '../../products'
 
 export default function Product() {
 
-  // const init = {
-  //   id: '',
-  //   name: '',
-  //   price: '',
-  //   stockValue: 'stocking',
-  //   image: ''
-  // }
+  const init = {
+    id: '',
+    name: '',
+    price: '',
+    stockValue: 'stocking',
+    image: ''
+  }
+
+  const [items, setItems] = useState(JSON.parse(localStorage.getItem('items')) || ListItems);
+  const [infor, setInfo] = useState(init);
+  const [update, setUpdate] = useState(false);
 
   return (
     <Alert className='primary'>
@@ -93,7 +97,7 @@ export default function Product() {
           </tr>
         </thead>
         <tbody>
-          {/* {
+          {
             items.map((p) => (
               <tr key={p.id} onClick={() => {
                 setInfo({
@@ -112,10 +116,10 @@ export default function Product() {
                 <td>
                   <img src={p.image} height={100} width={80} />
                 </td>
-                <td><Button onClick={() => deleteProduct(`${p.id}`)} className='btn btn-danger'>Delete</Button></td>
+                {/* <td><Button onClick={() => deleteProduct(`${p.id}`)} className='btn btn-danger'>Delete</Button></td> */}
               </tr>
             ))
-          } */}
+          }
         </tbody>
       </Table>
     </Alert>
